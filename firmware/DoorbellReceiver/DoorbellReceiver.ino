@@ -83,6 +83,17 @@ void decodeFrame(uint16_t *data, int count) {
     decodedCount++;
 
 
+#ifdef TINKER_BELL_LEARN_MODE
+    // Diagnostic mode: report RF codes without sending DOORBELL.
+    static uint32_t lastPrintedCode = 0;
+    static uint32_t lastPrintMs = 0;
+    uint32_t printNow = millis();
+    if (code != lastPrintedCode || printNow - lastPrintMs >= 1000) {
+      Serial.printf("BUTTON_CODE=0x%06lX\n", (unsigned long)code);
+      lastPrintedCode = code;
+      lastPrintMs = printNow;
+    }
+#else
     constexpr uint32_t DEBOUNCE_MS = 1500;
 
     static uint32_t lastBellMs = 0;
@@ -98,6 +109,7 @@ void decodeFrame(uint16_t *data, int count) {
       }
     }
 
+#endif
     return;
   }
 

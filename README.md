@@ -111,10 +111,15 @@ Audio collections are not included in the repository. Use sounds that you have p
 - [Installation](docs/installation.md)
 - [Русская документация](docs/README.ru.md)
 
+
+## Button code discovery
+
+To identify your own EV1527 button code, uncomment `#define TINKER_BELL_LEARN_MODE` in the local `firmware/DoorbellReceiver/button_config.h`, compile and upload the firmware, then monitor ESP32 serial output at 115200 baud. Press your button several times and look for `BUTTON_CODE=0xXXXXXX`. Restore the normal firmware after setting `BUTTON_CODE` (comment out the learn-mode define and re-upload). See [discovery instructions](docs/button-discovery.md). **Learning mode displays all decodable nearby EV1527-style traffic; it does not authenticate senders.**
+
 ## Security
 
 EV1527 uses fixed radio codes. Tinker Bell is intended for doorbell notifications, not for unlocking doors or controlling security-critical access.
 
 ## License
 
-License to be selected before the first public release.
+Licensed under the [MIT License](LICENSE).

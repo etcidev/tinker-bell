@@ -47,8 +47,7 @@ Copy the example button configuration:
 Edit button_config.h and set BUTTON_CODE to the
 24-bit identifier of your own wireless button.
 
-The project does not currently include an automatic
-button-code discovery utility.
+For an unknown button code, follow [Button code discovery](button-discovery.md).
 
 Compile the firmware:
 
