@@ -1,0 +1,23 @@
+[Unit]
+Description=Tinker Bell - Wireless Doorbell
+After=multi-user.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+SupplementaryGroups=audio dialout
+
+WorkingDirectory=/home/YOUR_USER/projects/tinker-bell
+
+ExecStart=/home/YOUR_USER/projects/tinker-bell/.venv/bin/python /home/YOUR_USER/projects/tinker-bell/server/doorbell.py
+
+Environment=PYTHONUNBUFFERED=1
+Environment=TINKER_BELL_SERIAL_PORT=/dev/ttyUSB0
+Environment=TINKER_BELL_SOUND_DIR=/home/YOUR_USER/tinker-bell-sounds
+Environment=TINKER_BELL_AUDIO_DEVICE=plughw:0,0
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

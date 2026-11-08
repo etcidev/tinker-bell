@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Arduino build files
+build/
+*.elf
+*.map
+*.bin
+
+# Audio library
+sounds/
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# Temporary files
+*.bak
+*.tmp
+
+# IDE
+.idea/
+.vscode/
+firmware/DoorbellReceiver/button_config.h
